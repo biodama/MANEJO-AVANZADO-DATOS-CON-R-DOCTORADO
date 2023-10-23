@@ -438,6 +438,39 @@ levels(datos$"nivel.estudios.factor")
 
 
 
+#1. Importa los datos del ejercicio de evaluacion (datos.evaluacion.txt)
+#2. Crea las siguentes variables tal y como se indica:
+#2.1. estado.civil.reducido: Es igual a la variable estado.civil pero donde la categoría de “Casado” debe
+#llamarse “cas”, la de “Soltero”, “otro”, y la de “Divorciado”, “otro”.
+#2.2. “talla”: variable que tenga valores de “XL” cuando el altura >=150 y “L” cuando la altura sea <150.
+#2.3. grupo.edad: Una variable categórica (factor) de la edad, con los siguientes grupos; “[0,30)” “[30,50)”
+#“[50,85]”
+
+
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+?read.table
+datos <- read.table("datos/datos.evaluacion.txt",header=T,sep="\t")
+
+head(datos)
+str(datos)
+
+class(datos$"estado.civil")
+sum(is.na(datos$"estado.civil"))
+
+datos$"estado.civil.reducido"<-as.factor(datos$"estado.civil")
+levels(datos$"estado.civil.reducido")
+
+
+datos$"altura"
+datos$"talla" <- cut()
+levels(datos$"talla")
+levels(datos$"talla")<-c("??","??")
+
+datos$"edad"
+datos$"grupo.edad"<-cut(datos$"edad",xxxxxxx)
+levels(datos$"grupo.edad")
+
+
 #################################################################
 # FECHAS
 #################################################################
