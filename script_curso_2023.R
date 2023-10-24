@@ -46,6 +46,10 @@ Control + R (en el Software de R básico)
 
 Control + Enter (en el RStudio)
 
+Command + Enter (en el Software de R basico en Mac)
+
+Command + Shift + c (en el Software de R basico en Mac y en R Studio) => Comentar texto
+
 
 # Atributos
 
@@ -120,6 +124,8 @@ BiocManager::install("DESeq2")
 setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
 
 library("openxlsx")
+
+?read.xlsx
 
 datos_importados <- read.xlsx("datos/datos.curso1.xlsx",sheet=1)
 
@@ -475,11 +481,28 @@ levels(datos$"grupo.edad")
 # FECHAS
 #################################################################
 
+
+rm(list=ls())
+gc()
+
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+
+load("datos/datos.curso1.RData")
+
+ls()
+
+class(datos)
+
+str(datos)
+
+
+
 # Formato fecha perfecto para R
 
 class(datos$"fdiag_cm")
 sum(is.na(datos$"fdiag_cm"))
 unique(datos$"fdiag_cm")
+sort(unique(datos$"fdiag_cm"),na.last=FALSE)
 
 datos$"fechas.CM" <- as.Date(datos$"fdiag_cm")
 
@@ -493,6 +516,7 @@ datos$"fechas.CM"[1:6]
 class(datos$"fdiag_cp")
 sum(is.na(datos$"fdiag_cp"))
 unique(datos$"fdiag_cp")
+sort(unique(datos$"fdiag_cp"),na.last=FALSE)
 
 datos$"fechas.CP" <- as.Date(datos$"fdiag_cp",format="%d.%m.%y")
 
@@ -506,7 +530,7 @@ unique(datos$"fechas.CP")
 class(datos$"fdef")
 sum(is.na(datos$"fdef"))
 unique(datos$"fdef")
-
+sort(unique(datos$"fdef"),na.last=FALSE)
 
 datos$"fechas.DF" <- as.Date(datos$"fdef",format="%Y.%m.%d")
 
@@ -516,13 +540,19 @@ unique(datos$"fechas.DF")
 
 
 
+# Restar o sumar dias a una fecha
+
+datos$"fecha.DF_especial" <- datos$"fechas.DF" - 3
+
+
+
 # Otros formatos especiales (CUIDADO!!!!!!!!!!)
+
+datos$"ano_def"<-format(datos$"fechas.DF",format="%Y")
 
 
 dates <- c("01ene1960", "02ene1960", "31mar1960", "30jul1960")
 as.Date(x=dates, format="%d%b%Y")
-
-
 
 dates <- c("01jan1960", "02jan1960", "31mar1960", "30jul1960")
 as.Date(x=dates, format="%d%b%Y")
@@ -550,6 +580,15 @@ datos$"fecha.IN" <- as.Date(datos$"finterv",format="%Y.%m.%d")
 datos$"fecha.IN_new"<-as.character(format(datos$"fechas.IN",format="%b;%Y"))
 
 
+# Secuencias de fechas
+
+seq(as.Date("2021-01-01"),by="days",length=6)
+
+seq(as.Date("2021-01-01"),to=as.Date("2023-03-01"),by="days")
+
+datos_temporales <- data.frame(fecha=seq(as.Date("2021-01-01"),to=as.Date("2023-03-01"),by="days"),casos=NA)
+
+
 # Formato fecha con horas, minutos y segundos
 
 first <- "2022-08-20 08:15:22"
@@ -560,17 +599,51 @@ difftime( second,first, units="mins")
 
 datos$"fecha_hora1_new"<-NULL
 
+
+#2.4. fecha.CM: variable tipo fecha a partir de la variable “fdiag_cm”
+#2.5. fecha.CP: variable tipo fecha a partir de la variable “fdiag_cp”
+#2.6. fecha.IN: variable tipo fecha a partir de la variable “finterv”
+#2.7. fecha.IN_new: variable tipo caracter a partir de la variable “fecha.IN” de tal manera que figure solo el
+#mes y el año como en el siguiente ejemplo (May;1980)
+#2.8. dias.in.CM: número de días entre la fecha de diagnostico de cáncer de mama (fecha.CM) y la fecha de
+#intervencion (fecha.IN)
+#2.9. semanas.df.CM: número de semanas entre la fecha de diagnostico de cáncer de mama (fecha.CM) y la
+#fecha de intervención (fecha.IN)
+#2.10. fecha_analisis_IN: variable tipo fecha resultante de restar 7 días a la fecha.IN
+
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+datos_evaluacion <- read.table("datos/datos.evaluacion.txt",header=T,sep="\t")
+
+
+class(datos_evaluacion$"fdiag_cm")
+sum(is.na(datos_evaluacion$"fdiag_cm"))
+sort(unique(datos_evaluacion$"fdiag_cm"),na.last=FALSE) # !CUIDADO AQUI EL SORT NO HACE LO QUE QUEREMOS
+
+
+datos_evaluacion$"fecha.CM" <- as.Date(datos_evaluacion$"fdiag_cm",format="%d.%m.%y")
+sum(is.na(datos_evaluacion$"fecha.CM"))
+sort(unique(datos_evaluacion$"fecha.CM"),na.last=FALSE)
+
+
+
+
 ###########################
 # CARACTERES
 ###########################
 
 # nchar() # numero de caracteres (de la librería gdata)
 
-nchar(as.character(datos$ID))
-table(nchar(as.character(datos$ID)))
+nchar(as.character(datos$"ID"))
+table(nchar(as.character(datos$"ID")))
 
 
 # paste() # concatenar caracteres
+
+datos$"ID_new"<-datos$"ID"
+datos$"ID_new"[nchar(as.character(datos$"ID"))==1]<-paste("00",datos$"ID_new"[nchar(as.character(datos$"ID"))==1],sep="")
+datos$"ID_new"[nchar(as.character(datos$"ID"))==2]<-paste("0",datos$"ID_new"[nchar(as.character(datos$"ID"))==2],sep="")
+table(nchar(as.character(datos$"ID_new")))
+
 
 x <- c("asfef", "qwerty", "yuiop[", "b", "stuff.blah.yech")
 
@@ -579,12 +652,23 @@ paste(x,collapse="/")
 
 datos$"id_combinado"<-paste(datos$"ID",datos$"sexo",sep="***")
 
+paste(datos$"ID",datos$"sexo",datos$"edad",sep="***")
+
+
 # strsplit() # Dividir los elementos de un vector de caracteres en subcadenas de acuerdo con criterio
+
+library("plyr") # para estructuras regulares
+
 
 res<-strsplit(datos$"fdiag_cm",split="-")
 res<-do.call(rbind.data.frame, res)
 names(res)<-c("year","month","day")
 head(res)
+
+table(res$"day",exclude=NULL)
+table(res$"month",exclude=NULL)
+table(res$"year",exclude=NULL)
+
 
 datos<-cbind(datos,res)
 datos$"year_otro"<-res$"year"
@@ -609,7 +693,7 @@ unique(interaction(datos$estado.civil,datos$sexo))
 table(interaction(datos$estado.civil,datos$sexo))
 
 nombres<-c("María","Pachón")
-
+# toupper
 nombres<-tolower(nombres)
 
 nombres<-gsub("á","a",nombres)
@@ -639,17 +723,47 @@ length(unique(datos$"ID"))
 
 # duplicated
 
-table(duplicated$"ID")
+table(duplicated(datos$"ID"))
 
 
 
-# Grep
+# Grep y match
 ID_new<-paste(datos$"ID",datos$"sexo",sep=".")
 ID2<-gsub("[.]","",ID_new)
 
 datos$"busqueda"<-"NO"
 indice<-grep("Muj",ID2)
 datos$busqueda[indice]<-"LO HE ENCONTRADO"
+
+match("Muj",ID2)
+
+
+
+datos_evaluacion$"complicaciones_new" <- datos_evaluacion$"complicaciones"
+
+datos_evaluacion$"complicaciones_new"<-tolower(datos_evaluacion$"complicaciones_new")
+
+datos_evaluacion$"complicaciones_new"<-gsub("á","a",datos_evaluacion$"complicaciones_new")
+datos_evaluacion$"complicaciones_new"<-gsub("é","e",datos_evaluacion$"complicaciones_new")
+datos_evaluacion$"complicaciones_new"<-gsub("í","i",datos_evaluacion$"complicaciones_new")
+datos_evaluacion$"complicaciones_new"<-gsub("ó","o",datos_evaluacion$"complicaciones_new")
+datos_evaluacion$"complicaciones_new"<-gsub("ú","u",datos_evaluacion$"complicaciones_new")
+
+datos_evaluacion$"complicaciones_new"<-gsub("ñ","n",datos_evaluacion$"complicaciones_new")
+
+datos_evaluacion$"complicaciones_new"<-gsub("ü","u",datos_evaluacion$"complicaciones_new")
+datos_evaluacion$"complicaciones_new"<-gsub("ö","o",datos_evaluacion$"complicaciones_new")
+
+
+indice<-grep("cancer",datos_evaluacion$"complicaciones_new")
+
+datos$"CANCER_comp"<-0
+datos$"CANCER_comp"[indice]<-1
+
+table(datos$"CANCER_comp",exclude=NULL)
+
+
+
 
 # Funciones
 
