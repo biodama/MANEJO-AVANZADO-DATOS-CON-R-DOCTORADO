@@ -631,7 +631,7 @@ sort(unique(datos_evaluacion$"fecha.CM"),na.last=FALSE)
 # CARACTERES
 ###########################
 
-# nchar() # numero de caracteres (de la librería gdata)
+# nchar() # numero de caracteres (de la libreria gdata)
 
 nchar(as.character(datos$"ID"))
 table(nchar(as.character(datos$"ID")))
@@ -764,6 +764,300 @@ table(datos$"CANCER_comp",exclude=NULL)
 
 
 
+##########################################################
+##########################################################
+##########################################################
+
+
+rm(list=ls())
+gc()
+
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+
+load("datos/datos.curso1.RData")
+
+
+DF = data.frame(
+id = c("Luke Skywalker","Darth Vader","Leia Organa","C-3PO","R2-D2"),
+peso = c(77, 136, 49, 75, 32),
+altura = c(172, 202, 150, 167, 96),
+especie= c("Humana","Humana","Humana","Droid","Droid"))
+DF
+
+
+starwars_ligeros1 <- subset(DF, peso < 50)
+starwars_ligeros1 <- DF[ DF$"peso"<50    ,       ]
+
+
+
+starwars_ligeros2 <- subset(DF, peso < 50 , select=c("id","altura"))
+starwars_ligeros2 <- DF[ DF$"peso"<50    ,  c("id","altura")     ]
+
+
+
+
+# Extraer el peso, la altura y el habito con el tabaco de los hombres divorciados.
+
+
+class(datos$"estado.civil")
+table(datos$"estado.civil",exclude=NULL)
+sum(is.na(datos$"estado.civil"))
+unique(datos$"estado.civil")
+
+
+class(datos$"sexo")
+table(datos$"sexo",exclude=NULL)
+sum(is.na(datos$"sexo"))
+unique(datos$"sexo")
+
+# "Divorciado"  "Hombre"
+
+names(datos)
+
+
+hombres_divorciados <- subset(datos, datos$"sexo"=="Hombre" & datos$"estado.civil"=="Divorciado", 
+		select=c("peso","altura","fumador","ID","sexo","estado.civil"))
+
+
+
+
+
+DF = data.frame(
+id = c("Luke Skywalker","Darth Vader","Leia Organa","C-3PO","R2-D2"),
+peso = c(77, 136, 49, 75, 32),
+altura = c(172, 202, 150, 167, 96),
+especie= c("Humana","Humana","Humana","Droid","Droid"))
+DF
+
+
+require(data.table) # lo mismo que library(data.table) install.packages("data.table")
+DT = data.table(DF) 
+DT[ , imc:=peso/(altura/100)^2] 
+DT
+
+DF$"imc"<-c(DF$"peso")/c(DF$"altura"/100)^2
+DF
+
+mean(DT$"imc")
+
+DT[,exceso.imc := imc / mean(imc)]
+
+
+# DT[i, j, by]
+
+mean(DT$"imc"[DT$"especie"=="Humana"])
+mean(DT$"imc"[DT$"especie"=="Droid"])
+
+DT[,exceso.imc := imc / mean(imc) , by=especie] # calculo estratificados
+DT
+
+
+#Partiendo de la la base datos, realizar el mismo cálculo que en el ejemplo anterior, pero
+#usando como referencia el IMC medio por sexo, estado civil y nivel de estudios.
+
+datosDT<-data.table(datos)
+datosDT
+
+
+datosDT[,imc:=peso/(altura/100)^2]
+
+datosDT[,exceso.imc:=imc/mean(imc),by=.(sexo,estado.civil,nivel.estudios)]
+
+
+
+
+# Calculos agregados, TABLAS
+
+# DT[i, j, by]
+
+DT[,.(media_imc = mean(imc), N = .N), by=especie]
+
+DT[,.(media_imc = mean(imc), N = .N)]
+
+
+setkey(datosDT,sexo,estado.civil) # ordena por sexo y estado civil
+datosDT[,.(prev.fumador = mean(fumador=="Si") ),by=.(sexo,estado.civil)]
+
+
+# TABLAS DE CONTINGENCIA con calculos integrados
+
+prop.table(table(datos$sexo,datos$estado.civil))
+
+porcentaje<-function(x) percent(mean(x=="Si")) # require(scales)
+dcast(datos,estado.civil ~ sexo, fun=porcentaje, value.var ="fumador")
+
+
+# RBIND
+
+
+DF1=data.frame(id=c("Luke Skywalker","C-3PO"), altura=c(172,96), color.ojos=c("azul","dorado"))
+DF2=data.frame(id="Darth Vader", altura=202, color.ojos="amarillo")
+DF3=data.frame(id="Leia Organa", altura=150, color.ojos="marrón")
+
+
+DF_TOTAL<-rbind(DF1,DF2,DF3)
+
+
+require(data.table)
+
+DT1=data.table(id="Luke Skywalker", altura=172, color.ojos="azul")
+DT2=data.table(id="Darth Vader", altura=202, color.ojos="amarillo")
+DT3=data.table(id="Leia Organa", altura=150, color.ojos="marrón")
+
+
+rbind(DT1,DT2,DT3)
+
+
+datosDT=data.table(datos) #convierte datos en un objeto data.table
+
+datosDT$"sexo"[c(2,5,7)]<-NA
+datosDT$"sexo"
+
+datos.hombres=subset(datosDT, sexo=="Hombre", select=c(sexo,peso)) # no selecciona los missing
+datos.mujeres=subset(datosDT, sexo=="Mujer", select=c(sexo,peso))  # no selecciona los missing
+
+class(datos.hombres)
+class(datos.mujeres)
+
+dim(datos.hombres)
+dim(datos.mujeres)
+
+names(datos.hombres)
+names(datos.mujeres)
+
+str(datos.hombres)
+str(datos.mujeres)
+
+
+datos_union<-rbind(datos.hombres,datos.mujeres)
+
+
+### ESTRATIFICACION
+
+
+unique(datos$"estado.civil")
+casados <- subset(datos, datos$"estado.civil"=="Casado")
+divorciados <- subset(datos, datos$"estado.civil"=="Divorciado")
+soltero <- subset(datos, datos$"estado.civil"=="Soltero")
+
+bases_nivel_estudios <- split(datos,factor(datos$"estado.civil"))
+bases_nivel_estudios[[1]]
+bases_nivel_estudios$"Casado"
+
+
+bases_nivel_estudios <- split(datos,factor(datos$"estado.civil"))
+casados <- bases_nivel_estudios$"Casado"
+divorciados <- bases_nivel_estudios$"Divorciado"
+solteros <- bases_nivel_estudios$"Soltero"
+
+
+# PARA DATA.TABLE
+
+temp<-subset(datosDT,select=c(sexo,estado.civil,peso))
+estratos<-split(temp, by="sexo")
+class(estratos)
+length(estratos)
+names(estratos)
+hombres <- estratos$"Hombre"
+mujeres <- estratos$"Mujer"
+missing_sexo <- estratos$"NA" 
+
+# Estratificacion teniendo en cuenta mas de una variable (DATA.TABLE)
+
+temp <-subset(datosDT,select=c(sexo,estado.civil,peso))
+estratos <- split(temp, by=c("sexo","estado.civil") )
+names(estratos)
+
+
+# MERGE (basico)
+
+
+DT1=data.table(id=c("C-3PO","R2-D2","Chewbacca"),altura=c(167,96,228))
+DT2=data.table(id=c("C-3PO","R2-D2"), peso=c(75,32))
+
+merge(DT1,DT2,by="id")
+merge(DT1,DT2,by="id",all.x=TRUE,all.y=TRUE)
+
+
+union_DT1_DT2<-merge(DT1,DT2,by="id",all.x=TRUE,all.y=TRUE)
+DT3<-data.table(id=c("Luke Skywalker"),peso=c(77),altura=c(172))
+merge(union_DT1_DT2,DT3,by="id",all.x=TRUE,all.y=TRUE) # CUIDADO CON ESTO
+rbind(union_DT1_DT2,DT3)
+
+
+class(DT1$"id")
+length(DT1$"id")
+length(unique(DT1$"id"))
+
+class(DT2$"id")
+length(DT2$"id")
+length(unique(DT2$"id"))
+
+length(intersect(DT1$"id",DT2$"id")) # 2
+length(setdiff(DT1$"id",DT2$"id")) # 1 = identificadores de DT1 que no estan en DT2
+length(setdiff(DT2$"id",DT1$"id")) # 0 = identificadores de DT2 que no estan en DT1
+
+intersect(DT1$"id",DT2$"id")
+setdiff(DT1$"id",DT2$"id")
+setdiff(DT2$"id",DT1$"id")
+
+
+
+
+# Merge con datos del curso
+
+basal <- subset(datosDT, select=c(ID,peso:diabetes))
+# basal <- subset(datosDT, select=c(ID,peso,altura,fumador,diabetes))
+
+socio.demo <- subset(datosDT, select=c(ID:nivel.estudios))
+# socio.demo <- subset(datosDT, select=c(ID,edad,sexo,estado.civil,nivel.estudios))
+
+class(basal$"ID")
+length(basal$"ID")
+length(unique(basal$"ID"))
+
+class(socio.demo$"ID")
+length(socio.demo$"ID")
+length(unique(socio.demo$"ID"))
+
+length(intersect(basal$"ID",socio.demo$"ID")) 
+length(setdiff(basal$"ID",socio.demo$"ID")) 
+length(setdiff(socio.demo$"ID",basal$"ID")) 
+
+union<-merge(basal,socio.demo)
+
+dim(union)
+union
+names(union)
+
+######################################################
+
+# WIDE / LONG FORMAT (DATA.TABLE)
+
+wide<- subset(datosDT, sexo=="Mujer", select=c(ID:sexo,fdiag_cm,fdef))
+setkey(wide,ID)
+
+
+# dos maneras a long
+
+long <- melt(wide, id=1:3,variable.name = "tipo_fecha", value.name = "fecha")
+setkey(long,ID)
+
+
+long <- melt(wide, measure=4:5,variable.name = "tipo_fecha", value.name = "fecha")
+setkey(long,ID)
+
+
+# pasar long a formato wide 
+
+wide <- dcast(long, ID + sexo + edad ~ tipo_fecha,value.var="fecha")
+head(wide)
+
+
+
+##########################################################
+##########################################################
+##########################################################
 
 # Funciones
 
