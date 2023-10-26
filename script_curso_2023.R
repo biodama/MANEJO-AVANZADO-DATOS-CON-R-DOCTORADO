@@ -1054,6 +1054,98 @@ wide <- dcast(long, ID + sexo + edad ~ tipo_fecha,value.var="fecha")
 head(wide)
 
 
+##########################################################
+##########################################################
+##########################################################
+
+# Valores repetidos
+
+length(basal$"ID")
+length(unique(basal$"ID"))
+
+table(duplicated(basal$"ID"))
+
+
+# Numero de caracteres
+
+nchar(as.character(datos$"ID"))
+
+table(nchar(as.character(datos$"ID")))
+
+# Union de dos variables
+
+datos$"ID.new"<-paste(datos$"ID",datos$"sexo",sep=".")
+
+
+# strsplit
+
+res<-strsplit(datos$"ID.new",split="[.]")
+res<-do.call(rbind.data.frame, res)
+names(res)<-c("PARTE1","PARTE2")
+
+datos$"ID.num"<-res$"PARTE1"
+
+head(datos)
+
+
+# gsub quitar a ID.new el punto
+
+
+datos$"ID.final"<-datos$"ID.new"
+
+datos$"ID.final"<-gsub("[.]","",datos$"ID.final")
+
+
+# Importacion y merge con datos
+
+
+datos.biomarcadores.txt   # bio
+
+
+
+
+datos_snps.txt            # snps
+
+
+# Preludio (importo datos y paquetes)
+
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+
+load("datos/datos.curso1.RData")
+
+snps <- read.table("datos/datos_snps.txt",header=T,sep="\t")
+bio <- read.table("datos/datos.biomarcadores.txt",header=TRUE)
+
+library(data.table)
+
+datos<-data.table(datos)
+snps<-data.table(snps)
+bio<-data.table(bio)
+
+
+class(datos$ID)
+class(snps$ID)
+class(bio$ID)
+
+length(intersect(datos$"ID",snps$"ID"))
+length(intersect(datos$"ID",bio$"ID"))
+
+length(intersect(snps$"ID",bio$"ID"))
+
+
+
+
+
+###############################################################
+datos$"ID.new4"<-datos$"ID.new1"
+
+seleccion<-datos$"sexo"=="Hombre"
+
+
+datos$"ID.new4"[seleccion]<-gsub("-",".",datos$"ID.new4"[seleccion])
+
+
+
 
 ##########################################################
 ##########################################################
@@ -1061,8 +1153,14 @@ head(wide)
 
 # Funciones
 
+rm(list=ls())
+gc()
 
-mi.funcion <- function(x){
+setwd("/Users/pfernandezn/Desktop/CURSO.MANEJO/")
+
+load("datos/datos.curso1.RData")
+
+mi.funcion <- function( x ){
 	
 	res<-x/10
 	
@@ -1070,8 +1168,12 @@ mi.funcion <- function(x){
 		
 }
 
-datos$"edad_new"<-mi.funcion(datos$"edad")
+datos$"edad_new" <- mi.funcion(x=datos$"edad")
 
+datos$"peso_new" <- mi.funcion(x=datos$"peso")
+
+
+mi.funcion(x=datos$"estado.civil")
 
 
 mi.funcion2 <- function(x,valor=10){
@@ -1195,10 +1297,6 @@ datos<-cbind(datos,datos_depurados)
 
 
 
-
-
-
-
 ##############
 # Tiempos
 ##############
@@ -1218,26 +1316,144 @@ difftime(final,inicio,units="mins")
 
 
 
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+
+
+# Caso estudio
+
+
+covid_DF<-read.csv("https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv")
+
+# covid_DF<-read.csv2("https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv")
+
+
+covid_DF$"fecha"<-as.Date(covid_DF$"fecha")
+
+round(covid_DF$"fecha")[1:10] # ESTO NO HACE LO QUE QUEREMOS
+
+
+
+# install.packages("curl")
+
+require(data.table)
+ruta.covid = "https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv"
+covid_DT<-fread(ruta.covid)
+
+covid_DT[   ,semana:=round(fecha)] # Version DATA.TABLE
+covid_DT$"semana_clasica" <- round(covid_DT$"fecha") # Version clasica
 
 
 
 
+# Eliminar el prefijo num_ de las variables de conteo.
+
+names(covid_DT) <- gsub("num_","",names(covid_DT))
+
+names(covid_DT)
+
+names(covid_DT)[2]<- "sex"
+
+names(covid_DT)
+
+names(covid_DT)[c(3,5)]<-c("age_gr","cases")
+
+names(covid_DT)
+
+
+# Reestructurar la base de manera que la base tenga una fila por cada conteo
+
+covid_DT_long <- melt(covid_DT, measure=5:8,variable.name = "tipo_covid", value.name = "numero")
+
+covid_DT_long1<-melt(covid_DT,id=c(1:4,9:10),variable.name = "tipo_covid", value.name = "numero")
+
+
+# A partir de la base anterior, crear una tabla de frecuencias con el grupo de edad en filas y la gravedad de la enfermedad en columnas
+
+
+dcast(covid_DT_long, age_gr~tipo_covid ,fun=sum)
+
+dcast(covid_DT_long, provincia_iso~tipo_covid ,fun=sum)
+
+mirar <- dcast(covid_DT_long, provincia_iso~tipo_covid ,fun=sum)
+
+setkey(mirar,def)
+
+
+############################################################################
+
+ruta.ine="https://www.ine.es/jaxi/files/_px/es/csv_bdsc/t20/e245/p08/l0/01002.csv_bdsc?nocab=1"
+
+ine <- fread(ruta.ine)
+
+# Filtrar y formatear la base del INE para poder juntar los datos de población de 2021 (por grupos de edad) a
+# la base agregada de covid anterior.
+
+names(covid_DT_long)
+
+# "provincia_iso"  "sex"            "age_gr"         "fecha"         
+# "semana"         "semana_clasica" "tipo_covid"     "numero"
+
+names(ine)
+
+# "Edad (grupos quinquenales)" "Españoles/Extranjeros"  "Sexo"  "Año""Total"      
+
+names(ine)<-c("age_gr","origen","sex","ano","total")
+
+names(ine)
 
 
 
+class(ine$"age_gr")
+
+table(ine$"age_gr")
+
+class(covid_DT_long$"age_gr")
+
+table(covid_DT_long$"age_gr")
 
 
+# Sub-base    edad todo menos TOTAL EDADES y en origen =TOTAL y año 2021
+
+ine_2 <- subset(ine, age_gr!="TOTAL EDADES" & sex=="Ambos sexos" & origen=="TOTAL" & ano==2021)
+
+ine_2[,pob:=as.numeric(gsub("[.]","",total))]
+
+ine_2$"pob_new" <- as.numeric(gsub("[.]","",ine_2$"total"))
 
 
+# Otras uniones
+
+library("data.table")
+
+setwd("/Users/pfernandezn/Desktop/MANEJO_AVANZADO_DATOS_CON_R_DOCTORADO_2023/datos")
+
+datos<-read.table("datos.evaluacion.txt",sep="\t",header=T)
+
+datos<-as.data.table(datos)
 
 
+genes<-as.data.table(genes)
+biomarcadores<-as.data.table(biomarcadores)
 
 
+union<-merge(datos,genes,by="ID")
+
+union<-merge(union,biomarcadores,by="ID",all.x=T,all.y=F)
+
+names(union)
+
+# Mirar donde estan los biomarcadores: en este caso estan en las columnas de la 116 a la 122
+
+datos_long_union <- melt(union[,c(1,116:122)], id=c(1),
+variable.name = "Biomarcodor", value.name = "Concentracion")
 
 
-
-
-
+datos_long_union2 <- melt(union[,c(1,116:122)], measure=c(2:8),
+variable.name = "Biomarcodor", value.name = "Concentracion")
 
 
 
