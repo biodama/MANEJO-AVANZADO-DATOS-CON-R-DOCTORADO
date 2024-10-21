@@ -1,0 +1,201 @@
+ID	edad	sexo	estado.civil	nivel.estudios	peso	altura	fumador	diabetes	cancer.mama	cancer.prostata	fdiag_cp	fdiag_cm	finterv	complicaciones
+137--EXT_1	37	Mujer	Casado	Bajo	59.58221106	150.7163377	No	No	Si	NA	05/05/1977	NA	1977.05.14	Cancer pancreas;Cancer pancreas
+174--MAD_1	85	Mujer	Soltero	Alto	59.95427072	149.2075079	No	Si	No	NA	NA	NA	NA	EPOC;Cancer gástrico
+200--AND_2	29	Hombre	Casado	Bajo	79.20674183	168.9795017	No	Si	Si	Si	28/09/2007	17.06.96	2007.12.13	Infarto;Infarto
+23--GA_2	13	Hombre	Divorciado	Alto	80.78347334	171.1568206	Si	Si	NA	Si	NA	12.08.06	2006.10.06	Cancer gástrico;Fiebre
+39--GA_1	49	Hombre	Divorciado	Bajo	80.76036388	170.5681639	Si	Si	NA	No	NA	NA	NA	Fiebre;Cancer pancreas
+90--EXT_2	12	Hombre	Casado	Alto	79.83425853	170.8564727	No	No	NA	Si	NA	28.06.02	2002.08.21	Cancer pancreas;Cancer gástrico
+40--GA_1	85	Hombre	Casado	Alto	80.69635818	168.5586123	No	No	NA	Si	NA	29.08.02	2002.10.07	Infarto;Infarto
+115--AND_1	31	Mujer	Soltero	Alto	61.28985209	150.0667303	Si	No	Si	NA	01/01/1980	NA	1980.03.24	Infarto;Cancer pancreas
+72--EXT_2	39	Mujer	Divorciado	Bajo	60.70870535	150.4091219	Si	Si	Si	NA	12/10/1996	NA	1997.01.08	Infarto;Diarrea
+27--EXT_2	70	Hombre	Soltero	Medio	78.89874315	167.8306922	No	Si	NA	Si	NA	23.04.01	2001.05.08	Diarrea;Diarrea
+19--EXT_2	24	Mujer	Divorciado	Alto	60.06983867	149.5328376	No	No	Si	NA	18/03/2003	NA	2003.04.02	Fiebre;Cancer pancreas
+133--GA_2	45	Hombre	Soltero	Medio	79.57262697	170.701263	Si	Si	NA	Si	NA	03.06.02	2002.07.15	Fiebre;Cancer gástrico
+15--EXT_2	42	Mujer	Soltero	Bajo	60.39386506	150.7225852	Si	No	Si	NA	13/05/1996	NA	1996.07.23	Cancer pancreas;Infarto
+44--EXT_1	74	Mujer	Casado	Medio	60.33449058	148.2137203	No	Si	Si	NA	18/03/1993	NA	1993.05.31	Fiebre;Diarrea
+179--AND_1	16	Mujer	Divorciado	Medio	60.0123724	151.4406741	Si	Si	Si	NA	22/05/1995	NA	1995.06.25	Infarto;Infarto
+148--EXT_1	6	Mujer	NA	Bajo	57.93048638	149.7306123	No	No	Si	NA	31/01/2008	NA	2008.02.24	Diarrea;Cancer gástrico
+192--AND_1	31	Mujer	Casado	Bajo	57.99527344	148.3325958	Si	Si	Si	NA	24/04/1985	NA	1985.05.07	Diarrea;EPOC
+186--AND_2	83	Mujer	Soltero	Bajo	60.44400564	150.3675453	Si	Si	Si	NA	18/07/1978	NA	1978.10.21	Diarrea;Diarrea
+18--GA_2	32	Hombre	Divorciado	Alto	79.39824748	168.9841337	Si	No	NA	No	NA	NA	NA	EPOC;Infarto
+106--MAD_2	67	Hombre	Soltero	Medio	NA	170.667866	No	Si	NA	Si	NA	16.07.08	2008.07.23	Cancer gástrico;Infarto
+86--EXT_2	54	Mujer	Divorciado	Medio	60.02078656	150.1170292	Si	Si	No	NA	NA	NA	NA	Infarto;EPOC
+55--GA_2	18	Hombre	Soltero	Bajo	78.3057429	170.964208	No	Si	NA	Si	NA	09.05.91	1991.08.03	Diarrea;Fiebre
+20--AND_1	84	Hombre	Casado	Bajo	80.35391081	NA	Si	Si	NA	No	NA	NA	NA	Infarto;Diarrea
+102--EXT_2	40	Mujer	Soltero	Bajo	60.34935182	150.3949117	Si	No	No	NA	NA	NA	NA	Diarrea;Infarto
+140--AND_2	6	Hombre	Divorciado	Bajo	79.47181158	170.0953285	Si	No	NA	Si	NA	19.05.76	1976.06.17	Infarto;EPOC
+112--EXT_1	63	Mujer	Soltero	Medio	60.058652	150.2746905	No	Si	No	NA	NA	NA	NA	EPOC;Infarto
+183--EXT_2	79	Hombre	Soltero	Alto	79.69626848	169.4479742	Si	Si	NA	Si	NA	12.08.16	2016.11.12	Infarto;Infarto
+120--AND_2	27	Mujer	Divorciado	Alto	58.60143623	150.2412287	No	Si	Si	NA	27/12/2018	NA	2019.02.15	Infarto;Cancer pancreas
+117--AND_1	34	Hombre	Soltero	Alto	80.76926742	168.8786623	No	No	NA	Si	NA	16.11.86	1986.12.12	Fiebre;Cancer pancreas
+130--MAD_1	53	Hombre	Divorciado	Alto	79.05485052	170.1690361	Si	No	NA	Si	NA	12.05.15	2015.06.14	EPOC;Diarrea
+144--MAD_1	23	Mujer	Divorciado	Alto	59.16447718	149.9303979	No	No	Si	NA	21/05/1982	NA	1982.05.28	Cancer gástrico;Cancer gástrico
+41--MAD_2	66	Hombre	Casado	Medio	79.3536134	170.4784096	Si	No	NA	No	NA	NA	NA	Diarrea;Infarto
+193--MAD_1	29	Mujer	Casado	Alto	58.42305085	149.1501345	Si	No	Si	NA	20/06/2006	NA	2006.08.09	Infarto;Cancer gástrico
+12--GA_2	54	Hombre	Soltero	Medio	78.61265153	169.0949653	Si	Si	NA	Si	NA	25.03.95	1995.04.24	Cancer pancreas;Fiebre
+108--AND_2	32	Mujer	Casado	Bajo	60.56363131	150.0661381	No	Si	Si	NA	22/12/2006	NA	2007.02.28	Fiebre;Fiebre
+17--MAD_1	7	Mujer	Soltero	Bajo	58.65924825	NA	Si	Si	Si	NA	13/01/1989	NA	1989.04.16	Cancer pancreas;Diarrea
+157--AND_1	42	Hombre	Soltero	Bajo	79.90425249	169.8201529	No	Si	NA	Si	NA	29.03.90	1990.06.25	Infarto;Diarrea
+122--MAD_2	68	Mujer	Casado	Alto	61.06286537	149.0317757	No	No	Si	NA	10/04/2009	NA	2009.05.31	Cancer pancreas;Cancer gástrico
+25--AND_1	15	Hombre	Soltero	Alto	81.42742581	169.815001	No	Si	NA	Si	NA	24.12.81	1982.02.16	EPOC;Infarto
+50--MAD_2	6	Hombre	Casado	Bajo	80.68349637	168.3866232	Si	No	NA	Si	NA	07.06.80	1980.08.05	Infarto;EPOC
+146--EXT_1	38	Mujer	Soltero	Bajo	58.74114909	150.043097	No	Si	Si	NA	26/01/2017	NA	2017.02.27	Cancer gástrico;Fiebre
+29--AND_1	28	Hombre	Casado	Medio	80.60407571	170.8330402	Si	No	NA	Si	NA	23.08.97	1997.09.03	Cancer pancreas;Cancer gástrico
+187--AND_1	27	Mujer	NA	Alto	NA	149.2774496	No	No	Si	NA	30/01/2017	NA	2017.04.19	Infarto;Infarto
+64--AND_2	7	Mujer	Divorciado	Bajo	60.67000151	151.5040406	No	No	Si	NA	02/12/2004	NA	2005.01.04	Fiebre;Fiebre
+185--MAD_1	9	Hombre	Divorciado	Alto	82.13408203	169.4243908	No	Si	NA	Si	NA	13.06.08	2008.07.25	Diarrea;EPOC
+31--GA_2	85	Mujer	Divorciado	Medio	59.54809772	150.3059243	No	No	Si	NA	13/05/2018	NA	2018.08.13	EPOC;Infarto
+21--MAD_2	24	Hombre	Casado	Alto	79.06357252	170.3569244	Si	No	NA	Si	NA	03.11.82	1983.02.02	EPOC;Cancer gástrico
+78--AND_1	57	Mujer	Soltero	Medio	58.93865552	149.9911705	No	Si	Si	NA	01/04/1985	NA	1985.05.13	EPOC;Cancer gástrico
+11--GA_2	30	Hombre	Divorciado	Alto	81.73699104	169.1570616	Si	Si	NA	Si	NA	24.08.08	2008.11.10	Diarrea;Cancer gástrico
+87--EXT_2	84	Hombre	Soltero	Alto	80.20169413	170.2267185	Si	Si	NA	Si	NA	07.08.05	2005.08.20	Infarto;Cancer pancreas
+116--AND_1	64	Hombre	Divorciado	Medio	80.71774982	167.6929181	No	No	NA	Si	NA	25.06.00	2000.07.28	EPOC;Cancer pancreas
+47--EXT_2	81	Mujer	Casado	Bajo	61.21060575	149.088469	No	Si	Si	NA	16/05/2010	NA	2010.08.13	EPOC;Cancer gástrico
+8--AND_2	38	Hombre	Casado	Alto	80.21772249	170.2391775	Si	Si	NA	Si	NA	11.05.84	1984.07.22	Fiebre;Diarrea
+94--GA_1	73	Hombre	Divorciado	Alto	NA	168.2747898	No	Si	NA	Si	NA	11.04.05	2005.04.27	Fiebre;Fiebre
+92--EXT_2	54	Mujer	Casado	Bajo	59.50153232	150.7325198	No	No	Si	NA	05/01/2015	NA	2015.01.31	Infarto;Cancer pancreas
+173--EXT_2	19	Hombre	Soltero	Alto	79.17449624	170.0500375	Si	No	NA	Si	NA	04.05.00	2000.08.01	Diarrea;EPOC
+175--MAD_2	77	Hombre	Soltero	Medio	79.05946119	169.3775454	Si	Si	NA	Si	NA	13.03.95	1995.06.02	Cancer gástrico;Cancer gástrico
+79--AND_1	29	Mujer	Soltero	Bajo	59.24915801	149.8325896	No	Si	Si	NA	20/09/1981	NA	1981.11.07	Cancer pancreas;Diarrea
+5--GA_1	81	Hombre	Soltero	Alto	80.11593333	168.1224164	No	No	NA	Si	NA	15.06.92	1992.07.08	Fiebre;Infarto
+36--EXT_1	20	Hombre	Casado	Alto	80.11152729	168.8876886	Si	Si	NA	Si	NA	11.12.93	1993.12.26	EPOC;Fiebre
+110--AND_1	41	Mujer	Casado	Medio	60.35693464	148.6183321	No	Si	No	NA	NA	NA	NA	Cancer pancreas;Fiebre
+196--AND_2	44	Hombre	Casado	Alto	79.43454228	168.347432	Si	No	NA	No	NA	NA	NA	Infarto;Infarto
+14--MAD_2	83	Mujer	Divorciado	Alto	60.71542482	150.4890179	Si	Si	No	NA	NA	NA	NA	Infarto;Diarrea
+71--MAD_1	69	Mujer	Casado		61.65951062	150.3240984	Si	No	Si	NA	28/02/1989	NA	1989.04.30	Infarto;Infarto
+30--MAD_1	49	Hombre	Soltero	Bajo	81.50155033	NA	No	No	NA	Si	NA	07.12.78	1978.12.11	Infarto;Diarrea
+69--MAD_1	57	Hombre	Divorciado	Bajo	81.0921106	170.9358247	Si	No	NA	No	NA	NA	NA	Diarrea;Cancer gástrico
+124--GA_2	58	Mujer	Divorciado	Bajo	59.02675901	150.6407689	Si	Si	No	NA	NA	NA	NA	Cancer pancreas;Cancer pancreas
+139--GA_2	27	Mujer	Soltero	Bajo	59.54464451	150.963829	No	No	Si	NA	23/07/1989	NA	1989.08.25	Diarrea;Fiebre
+54--MAD_1	21	Hombre	Divorciado	Alto	79.54855803	169.0321316	No	No	NA	Si	NA	05.05.91	1991.06.09	Diarrea;EPOC
+172--AND_1	48	Mujer	Divorciado	Bajo	62.30988495	151.0933059	Si	No	Si	NA	12/05/2001	NA	2001.05.22	Diarrea;Fiebre
+95--MAD_1	60	Hombre	Divorciado	Medio	79.7847828	170.8898912	Si	Si	NA	Si	NA	20.12.13	2014.03.04	Cancer pancreas;Cancer gástrico
+103--MAD_1	67	Mujer	Soltero	Alto	59.03791061	149.288136	No	No	Si	NA	18/01/1983	NA	1983.03.17	Fiebre;Cancer gástrico
+10--GA_2	6	Mujer	Divorciado	Bajo	NA	150.221004	No	No	Si	NA	24/03/1984	NA	1984.05.02	EPOC;Infarto
+88--EXT_1	24	Hombre	Casado	Bajo	79.80873073	170.3536476	No	Si	NA	Si	NA	22.07.98	1998.08.07	Infarto;Fiebre
+76--EXT_1	85	Mujer	Divorciado	Alto	59.85655648	150.5644134	No	Si	Si	NA	29/11/2013	NA	2013.12.14	Cancer pancreas;Cancer pancreas
+99--AND_2	38	Hombre	Divorciado	Bajo	77.7932502	170.4412886	No	No	NA	No	NA	NA	NA	Fiebre;Infarto
+149--AND_2	45	Mujer	Soltero	Bajo	59.45577604	151.8925374	Si	No	Si	NA	24/04/2013	NA	2013.05.04	Infarto;Infarto
+22--GA_1	64	Mujer	Divorciado	Bajo	61.87330621	148.137501	No	No	Si	NA	26/12/1995	NA	1996.02.15	Infarto;Cancer pancreas
+125--AND_2	8	Mujer	Divorciado	Bajo	58.72452441	150.8996872	No	No	Si	NA	20/06/2014	NA	2014.08.12	Fiebre;Fiebre
+83--MAD_1	38	Hombre	Casado	Bajo	80.97674508	169.634013	No	Si	NA	Si	NA	09.01.93	1993.03.13	Cancer pancreas;Fiebre
+176--GA_2	54	Mujer	Divorciado	Bajo	59.8200971	150.5924932	No	No	No	NA	NA	NA	NA	EPOC;Fiebre
+105--EXT_1	57	Hombre	NA	Bajo	82.28080574	170.016586	No	Si	NA	Si	NA	05.02.18	2018.03.16	Diarrea;EPOC
+74--AND_2	34	Mujer	Soltero	Bajo	60.28739925	151.8110243	Si	Si	No	NA	NA	NA	NA	Diarrea;Infarto
+128--MAD_1	43	Mujer	Casado	Alto	58.65228183	149.7419581	No	Si	Si	NA	11/08/1984	NA	1984.11.08	Infarto;Cancer gástrico
+114--EXT_2	60	Mujer	Divorciado	Medio	60.50344846	148.8830085	Si	Si	No	NA	NA	NA	NA	Infarto;Fiebre
+91--AND_1	65	Mujer	Soltero	Alto	58.87768058	149.6275051	No	No	Si	NA	22/11/2005	NA	2005.11.25	Fiebre;Cancer pancreas
+49--AND_2	58	Mujer	Soltero	Alto	59.01203897	149.6590043	No	Si	Si	NA	13/07/2006	NA	2006.10.07	Cancer gástrico;Infarto
+100--AND_1	69	Mujer	Divorciado	Bajo	60.87185135	151.2991698	No	No	Si	NA	17/10/2018	NA	2018.11.28	Infarto;Diarrea
+156--EXT_2	67	Hombre	Divorciado	Alto	78.87938069	168.5252724	Si	Si	NA	No	NA	NA	NA	EPOC;EPOC
+195--GA_2	55	Mujer	Divorciado	Medio	57.58416128	151.1169184	No	No	No	NA	NA	NA	NA	Cancer pancreas;Diarrea
+184--EXT_1	72	Mujer	Soltero	Alto	58.96337323	150.9964074	Si	Si	No	NA	NA	NA	NA	Cancer gástrico;Fiebre
+198--EXT_1	53	Mujer	Soltero	Bajo	61.2423645	150.8138314	Si	No	Si	NA	14/08/1999	NA	1999.11.01	Cancer gástrico;EPOC
+177--AND_2	64	Hombre	Divorciado	Bajo	77.20059253	168.8388804	No	No	NA	Si	NA	10.07.88	1988.09.25	Diarrea;Cancer pancreas
+26--MAD_2	29	Hombre	Casado	Alto	NA	170.8722911	No	No	NA	Si	NA	30.08.03	2003.11.28	Cancer pancreas;EPOC
+96--EXT_2	32	Hombre	Casado	Bajo	79.85478126	170.4130733	No	No	NA	Si	NA	02.11.78	1979.01.19	EPOC;Infarto
+189--MAD_1	9	Mujer	Divorciado	Alto	59.99715827	149.4734457	Si	No	No	NA	NA	NA	NA	Fiebre;Infarto
+178--EXT_1	27	Hombre	Soltero	Bajo	80.19343532	171.5707658	Si	No	NA	No	NA	NA	NA	Cancer gástrico;Cancer pancreas
+154--MAD_2	64	Hombre	Divorciado	Alto	77.81976105	170.4171551	No	Si	NA	Si	NA	03.03.76	1976.05.06	Fiebre;Cancer gástrico
+66--MAD_2	16	Hombre	Casado	Medio	79.25976625	171.5467808	Si	Si	NA	Si	NA	17.11.77	1977.11.21	EPOC;Cancer pancreas
+162--EXT_1	51	Mujer	Soltero	Alto	61.28877532	148.6647962	Si	No	Si	NA	26/06/2005	NA	2005.08.28	Cancer pancreas;Infarto
+121--EXT_2	38	Mujer	Casado	Bajo	58.94799697	149.019663	Si	Si	Si	NA	20/11/2000	NA	2000.12.10	Cancer gástrico;Cancer pancreas
+38--EXT_2	1	Hombre	Casado	Medio	79.07384738	170.5016735	Si	No	NA	No	NA	NA	NA	Cancer pancreas;Fiebre
+109--AND_1	9	Hombre	Divorciado	Alto	78.31865451	170.2298128	No	No	NA	No	NA	NA	NA	EPOC;Cancer gástrico
+171--MAD_1	57	Hombre	Divorciado	Bajo	80.07903737	168.6222506	No	Si	NA	No	NA	NA	NA	EPOC;Diarrea
+155--AND_2	31	Hombre	Soltero	Alto	81.35149501	171.4577863	No	No	NA	Si	NA	24.05.99	1999.08.19	Diarrea;EPOC
+24--EXT_2	39	Mujer	Divorciado	Medio	61.68462311	150.5502374	No	Si	Si	NA	17/02/1982	NA	1982.05.24	EPOC;Fiebre
+48--AND_2	42	Hombre	Soltero	Bajo	79.87281299	168.8607997	No	Si	NA	Si	NA	09.02.91	1991.03.29	Fiebre;Fiebre
+132--AND_2	66	Mujer	Divorciado	Bajo	59.87113814	150.1165117	No	No	Si	NA	02/12/2008	NA	2009.03.06	Infarto;Cancer pancreas
+153--AND_1	68	Hombre	Divorciado	Medio	81.28753172	169.9950786	No	Si	NA	No	NA	NA	NA	EPOC;EPOC
+138--AND_2	6	Hombre	Soltero	Bajo	79.98022742	168.4830027	Si	Si	NA	Si	NA	15.04.08	2008.06.08	Fiebre;Infarto
+147--GA_1	31	Mujer	Casado	Alto	58.98713505	NA	Si	No	Si	NA	18/04/2005	NA	2005.06.14	EPOC;Infarto
+163--EXT_2	42	Mujer	Divorciado	Medio	58.62176576	149.019743	No	Si	Si	NA	24/08/1977	NA	1977.12.01	Cancer gástrico;Infarto
+151--MAD_1	18	Hombre	Casado	Alto	79.939492	168.3979008	Si	Si	NA	No	NA	NA	NA	Cancer pancreas;Cancer gástrico
+58--EXT_1	72	Mujer	Divorciado	Bajo	60.70060122	149.8342302	No	No	Si	NA	04/11/2019	NA	2019.11.13	Cancer pancreas;Fiebre
+166--MAD_2	29	Mujer	Soltero	Bajo	59.9568987	151.3063902	Si	Si	Si	NA	30/12/2011	NA	2012.03.19	Fiebre;Cancer pancreas
+160--MAD_1	59	Hombre	Divorciado	Bajo	79.33052368	169.4809557	No	No	NA	Si	NA	28.05.83	1983.07.15	Cancer pancreas;Infarto
+80--AND_1	10	Hombre	Casado	Medio	79.38579439	172.8741677	Si	Si	NA	No	NA	NA	NA	Cancer pancreas;EPOC
+3--AND_1	4	Hombre	Soltero	Alto	80.13242368	168.7404888	No	Si	NA	Si	NA	15.05.90	1990.08.16	Cancer gástrico;Cancer pancreas
+67--AND_2	75	Mujer	Soltero	Bajo	57.30206219	149.7838477	No	Si	Si	NA	27/09/1987	NA	1987.12.15	Fiebre;Cancer gástrico
+45--GA_2	48	Hombre	Soltero	Alto	79.85134353	172.0214772	No	No	NA	Si	NA	03.01.91	1991.02.14	Infarto;Fiebre
+7--AND_1	14	Hombre	Divorciado	Alto	80.39130722	168.5987649	No	Si	NA	Si	NA	01.11.03	2004.01.13	EPOC;Cancer pancreas
+60--MAD_2	63	Mujer	Soltero	Alto	61.1727878	148.4496995	No	No	No	NA	NA	NA	NA	Diarrea;Cancer gástrico
+62--EXT_1	14	Hombre	Divorciado	Bajo	80.18183114	169.7199705	Si	No	NA	No	NA	NA	NA	Fiebre;Infarto
+194--GA_2	3	Mujer	Divorciado	Medio	60.63685483	148.6580579	Si	No	Si	NA	06/03/1995	NA	1995.03.31	Fiebre;Diarrea
+197--GA_1	85	Mujer	Casado	Medio	59.37053411	149.6450135	Si	No	Si	NA	06/01/2012	NA	2012.04.15	Cancer gástrico;Infarto
+82--EXT_1	28	Hombre	Casado	Bajo	80.07397569	169.3640645	No	Si	NA	Si	NA	22.08.95	1995.09.26	Diarrea;Cancer gástrico
+161--GA_2	54	Hombre	Divorciado	Alto	80.54568348	169.33755	Si	Si	NA	Si	NA	20.07.10	2010.09.17	Cancer gástrico;Infarto
+150--EXT_1	75	Hombre	Soltero	Medio	79.86729561	169.7989771	No	Si	NA	Si	NA	28.06.89	1989.08.13	Diarrea;Diarrea
+16--MAD_1	21	Mujer	Soltero	Medio	60.70181406	149.4409161	Si	Si	No	NA	NA	NA	NA	Infarto;Cancer gástrico
+165--EXT_1	5	Hombre	Divorciado	Alto	80.54255647	170.3470744	Si	Si	NA	Si	NA	24.10.11	2012.01.08	Diarrea;Cancer pancreas
+190--EXT_2	70	Hombre	Divorciado	Medio	79.51298657	169.6690086	No	No	NA	Si	NA	09.02.08	2008.03.02	EPOC;Cancer pancreas
+13--EXT_2	15	Hombre	Soltero	Alto	80.302304	168.5292561	No	No	NA	No	NA	NA	NA	Cancer pancreas;Cancer pancreas
+34--GA_2	5	Hombre	Casado	Alto	81.60511579	169.8918901	Si	No	NA	Si	NA	04.12.03	2004.03.10	EPOC;Fiebre
+32--MAD_2	30	Mujer	Soltero	Bajo	60.37551184	150.2781086	No	Si	No	NA	NA	NA	NA	EPOC;EPOC
+98--GA_1	66	Hombre	Casado	Alto	80.22297238	170.8109623	Si	Si	NA	Si	NA	04.11.00	2000.11.10	Cancer gástrico;Cancer pancreas
+70--AND_1	45	Hombre	Casado	Bajo	79.29469042	167.9930529	Si	No	NA	Si	NA	06.06.96	1996.07.16	Fiebre;Fiebre
+104--GA_2	6	Mujer	Divorciado	Medio	56.56024986	148.9579822	No	Si	Si	NA	15/02/2018	NA	2018.02.21	Diarrea;EPOC
+4--AND_2	9	Mujer	Soltero	Alto	61.173632	150.2083879	Si	No	Si	NA	09/09/1989	NA	1989.11.24	Fiebre;EPOC
+46--MAD_1	52	Hombre	Casado	Alto	80.82063532	170.1705476	No	No	NA	Si	NA	01.02.97	1997.03.26	Cancer gástrico;EPOC
+101--EXT_2	47	Hombre	Divorciado	Bajo	79.02213069	169.1812163	No	No	NA	Si	NA	04.03.17	2017.04.05	Diarrea;Diarrea
+164--GA_1	43	Mujer	Divorciado	Alto	61.65922396	148.7358132	No	No	Si	NA	27/12/1988	NA	1989.01.27	Fiebre;Infarto
+84--EXT_2	83	Hombre	Casado	Medio	80.94490428	169.6569814	Si	No	NA	Si	NA	17.11.16	2017.01.24	Diarrea;EPOC
+93--MAD_2	46	Mujer	Soltero	Bajo	57.88489962	148.93221	Si	No	Si	NA	10/03/1996	NA	1996.04.03	Cancer gástrico;Cancer pancreas
+77--GA_1	60	Hombre	Casado	Bajo	80.35399905	169.0626857	Si	No	NA	Si	NA	09.01.19	2019.02.28	Fiebre;Infarto
+118--GA_1	50	Mujer	Divorciado	Bajo	60.86373072	150.1402183	Si	Si	No	NA	NA	NA	NA	Infarto;Diarrea
+170--MAD_1	47	Mujer	Casado	Medio	60.34505518	148.5520255	No	Si	Si	NA	30/03/1999	NA	1999.04.22	Diarrea;Cancer pancreas
+188--MAD_2	3	Mujer	Divorciado	Alto	60.40389734	150.1736048	No	Si	Si	NA	15/05/2011	NA	2011.06.01	EPOC;Diarrea
+199--EXT_1	7	Hombre	Soltero	Bajo	81.32344543	169.9339458	Si	No	NA	Si	NA	15.06.10	2010.07.28	Cancer gástrico;EPOC
+53--MAD_1	20	Mujer	Soltero	Bajo	58.51271936	150.9345028	No	No	No	NA	NA	NA	NA	Cancer gástrico;Cancer pancreas
+75--AND_2	27	Hombre	Soltero	Alto	80.36468893	170.1565489	Si	No	NA	No	NA	NA	NA	EPOC;Cancer gástrico
+33--AND_2	35	Mujer	Casado	Alto	60.37777986	151.1476396	No	No	Si	NA	22/04/2008	NA	2008.06.29	Cancer gástrico;Infarto
+158--EXT_2	5	Mujer	Soltero	Bajo	59.89440546	151.0484766	Si	No	Si	NA	13/04/2002	NA	2002.07.16	Cancer pancreas;Cancer pancreas
+159--MAD_2	83	Hombre	Divorciado	Medio	79.96931	169.4815993	No	No	NA	Si	NA	21.02.03	2003.05.25	Cancer gástrico;Diarrea
+9--GA_1	82	Mujer	Soltero	Medio	60.67046885	150.1056845	No	No	Si	NA	21/05/2009	NA	2009.06.04	Fiebre;Infarto
+181--AND_1	29	Hombre	Divorciado	Bajo	79.79348889	169.7455706	Si	Si	NA	No	NA	NA	NA	Fiebre;Cancer pancreas
+107--MAD_1	52	Mujer	Casado	Medio	59.75748831	151.8687315	Si	No	Si	NA	28/01/2016	NA	2016.02.17	Fiebre;Cancer pancreas
+126--GA_1	16	Hombre	Divorciado	Alto	81.05588175	169.2894334	No	No	NA	Si	NA	19.09.76	1976.10.28	Cancer pancreas;Fiebre
+97--GA_1	32	Hombre	Divorciado	Bajo	81.92957224	171.1340689	No	No	NA	No	NA	NA	NA	Diarrea;Fiebre
+89--EXT_1	26	Hombre	Soltero	Alto	79.19028458	168.6723537	No	No	NA	Si	NA	18.08.12	2012.10.23	Cancer pancreas;Infarto
+167--EXT_2	17	Hombre	Casado	Bajo	79.35590928	169.4258039	No	No	NA	Si	NA	24.05.82	1982.06.22	Cancer pancreas;Cancer pancreas
+129--AND_1	82	Mujer	Soltero	Bajo	60.24382815	149.935882	No	Si	Si	NA	12/09/2019	NA	2019.10.31	Cancer gástrico;Cancer pancreas
+6--EXT_1	66	Mujer	Casado	Alto	58.91966752	150.4848232	No	Si	No	NA	NA	NA	NA	Fiebre;Fiebre
+63--EXT_2	83	Mujer	Divorciado	Medio	59.9502131	148.8417538	Si	No	Si	NA	12/09/2017	NA	2017.10.10	Cancer gástrico;Infarto
+56--GA_2	50	Hombre	Divorciado	Alto	79.78043709	168.7665934	Si	No	NA	Si	NA	26.01.91	1991.03.16	Infarto;Infarto
+136--AND_1	12	Hombre	Casado	Bajo	79.85068306	169.2762215	Si	Si	NA	Si	NA	14.04.13	2013.04.26	Fiebre;Cancer pancreas
+59--AND_2	37	Mujer	Divorciado	Alto	59.45264623	148.3435896	No	No	Si	NA	28/04/1987	NA	1987.06.06	Cancer pancreas;Infarto
+1--MAD_2	21	Hombre	Soltero	Alto	80.23501397	171.013755	No	No	NA	Si	NA	15.04.12	2012.05.13	Infarto;Cancer gástrico
+2--EXT_1	13	Mujer	Soltero	Alto	61.92519231	150.3045905	Si	No	Si	NA	16/04/2013	NA	2013.05.16	Cancer pancreas;EPOC
+65--MAD_2	50	Mujer	Soltero	Bajo	60.99306544	149.0398653	No	Si	Si	NA	28/06/2018	NA	2018.08.13	Fiebre;Cancer gástrico
+51--AND_2	52	Mujer	Soltero	Medio	59.11841791	149.3452966	No	Si	No	NA	NA	NA	NA	Diarrea;Fiebre
+180--GA_1	5	Mujer	Divorciado	Alto	59.28380736	148.5696233	Si	No	No	NA	NA	NA	NA	EPOC;Infarto
+28--AND_2	77	Hombre	Soltero	Medio	80.60120053	170.8490514	Si	No	NA	Si	NA	16.06.10	2010.07.13	Infarto;Cancer gástrico
+127--GA_1	76	Hombre	Soltero	Alto	81.55286785	170.5055869	Si	Si	NA	Si	NA	14.01.93	1993.03.15	Cancer gástrico;Diarrea
+182--MAD_1	78	Mujer	Soltero	Medio	60.28170987	149.2138778	Si	Si	Si	NA	11/05/1994	NA	1994.07.28	EPOC;EPOC
+141--GA_2	1	Hombre	Divorciado	Bajo	77.62305307	169.4928574	Si	No	NA	Si	NA	21.12.19	2020.02.03	Fiebre;Cancer pancreas
+61--EXT_2	51	Hombre	Divorciado	Bajo	79.38999786	169.423297	No	Si	NA	No	NA	NA	NA	Diarrea;EPOC
+73--GA_1	60	Hombre	Casado	Bajo	80.52989519	170.7486533	Si	Si	NA	Si	NA	16.10.01	2002.01.18	Fiebre;EPOC
+35--GA_2	57	Mujer	Soltero	Bajo	59.88201411	148.3035747	No	No	Si	NA	25/01/2016	NA	2016.04.25	Diarrea;Cancer pancreas
+134--MAD_2	36	Mujer	Soltero	Alto	59.46660419	149.4520252	No	No	Si	NA	21/12/1980	NA	1981.03.05	Diarrea;Fiebre
+152--AND_2	73	Mujer	Divorciado	Medio	60.94199184	150.1065586	Si	Si	No	NA	NA	NA	NA	Fiebre;Infarto
+37--MAD_1	6	Mujer	Soltero	Alto	58.7895366	150.5484764	No	Si	No	NA	NA	NA	NA	Cancer pancreas;EPOC
+111--EXT_2	67	Mujer	Divorciado	Medio	60.83049884	151.1779236	Si	No	Si	NA	23/02/2008	NA	2008.05.05	Cancer gástrico;Cancer gástrico
+81--MAD_1	4	Mujer	Casado	Medio	58.97676319	147.8264348	No	No	Si	NA	15/03/2016	NA	2016.05.24	Fiebre;Cancer gástrico
+113--EXT_1	28	Mujer	Soltero	Alto	60.59333886	150.9929626	Si	Si	No	NA	NA	NA	NA	Cancer pancreas;Cancer gástrico
+142--MAD_2	42	Mujer	Soltero	Medio	59.8451525	151.1286236	Si	No	No	NA	NA	NA	NA	Cancer gástrico;Infarto
+191--MAD_2	10	Hombre	Divorciado	Alto	80.7906754	171.7347522	Si	No	NA	Si	NA	30.07.93	1993.09.18	Fiebre;EPOC
+68--GA_2	56	Hombre	Soltero	Alto	79.27487741	171.1661254	No	No	NA	Si	NA	28.05.15	2015.08.15	Diarrea;Diarrea
+168--AND_1	16	Mujer	Soltero	Bajo	59.17550184	149.1619916	Si	Si	No	NA	NA	NA	NA	Cancer gástrico;Cancer pancreas
+85--MAD_1	7	Hombre	Divorciado	Medio	80.26368436	170.8677952	No	No	NA	Si	NA	03.08.86	1986.11.03	Fiebre;Diarrea
+131--AND_2	19	Hombre	Divorciado	Medio	80.24832787	169.4323447	No	No	NA	No	NA	NA	NA	Infarto;Fiebre
+52--EXT_1	77	Mujer	Casado	Medio	59.57056443	149.4516371	No	No	Si	NA	26/07/1986	NA	1986.09.19	Diarrea;Infarto
+135--GA_2	23	Mujer	Soltero	Alto	60.86943305	148.5006824	Si	No	Si	NA	12/05/1981	NA	1981.05.26	Diarrea;Cancer pancreas
+123--GA_1	63	Hombre	Casado	Alto	80.51446486	170.1458959	Si	No	NA	Si	NA	21.01.91	1991.03.31	EPOC;Infarto
+43--MAD_1	39	Hombre	Soltero	Medio	80.53970143	168.7127893	No	No	NA	No	NA	NA	NA	Diarrea;Fiebre
+119--AND_2	15	Hombre	Divorciado	Alto	78.8747163	169.1967204	No	No	NA	Si	NA	07.12.90	1991.01.21	Fiebre;Diarrea
+42--MAD_2	72	Mujer	Divorciado	Bajo	60.3175151	149.2896483	No	No	Si	NA	10/06/1982	NA	1982.09.13	Fiebre;EPOC
+145--GA_2	50	Hombre	Divorciado	Medio	78.75054056	169.5395933	No	Si	NA	Si	NA	02.02.11	2011.02.23	Diarrea;Infarto
+57--EXT_2	41	Hombre	Soltero	Medio	79.45076588	168.4156782	No	No	NA	No	NA	NA	NA	Cancer pancreas;Fiebre
+169--AND_2	44	Mujer	Soltero	Bajo	59.6917124	149.0113175	Si	No	No	NA	NA	NA	NA	Cancer gástrico;Cancer gástrico
+143--AND_2	54	Mujer	Divorciado	Medio	61.02373167	150.8796539	Si	Si	Si	NA	09/07/2006	NA	2006.08.06	EPOC;Fiebre
