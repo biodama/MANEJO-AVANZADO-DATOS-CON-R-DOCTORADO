@@ -44,12 +44,40 @@ head(datos.evaluacion)
 str(datos.evaluacion)
 
 
-
 #library("openxlsx")
 
 #datos.importar <- read.xlsx("")
 
+library("openxlsx")
 
+cristina<-read.xlsx("prueba.xlsx",sheet=1)
+
+str(cristina)
+
+cristina<-read.csv("prueba.csv",header=T,sep=",",encoding="UTF-8")
+
+str(cristina)
+
+library("readxl")
+
+cristina<-read_excel("prueba.xlsx",col_types=rep("text",19))
+
+
+#read.table
+#read.csv
+#read.csv2
+
+#Otras librarias de excel
+
+#Mirar nuestro propio excel
+
+#Mirar otras exportaciones (tipos)
+
+#Mirar con data.table
+
+library(data.table)
+
+DT_curso <- fread("/Users/pfernandezn/Desktop/MADR/datos/datos.evaluacion.txt")
 
 
 #####################################################
@@ -665,6 +693,169 @@ final-inicio
 
 difftime(final,inicio,units="mins")
 
+
+#####################################################
+#####################################################
+# FILTROS Y CALCULOS
+#####################################################
+#####################################################
+
+#######################
+# Hacer Subsets
+#######################
+
+hombres_casados <- datos[datos$"sexo"=="Hombre" & datos$estado.civil=="Casado" ,  ]
+
+dim(hombres_casados)
+
+
+# subset data.frame
+
+dat1 <- subset(datos,sexo=="Hombre" & estado.civil=="Casado")
+
+dat2 <- subset(datos,peso<58)
+
+dat3 <- subset(datos,peso<58, select = c(ID,peso,sexo))
+ 
+ 
+# data.table 
+ 
+ 
+library(data.table) 
+
+DT <- as.data.table(datos)
+
+DT
+
+# subset data.table
+
+dat4 <- subset(DT,peso<58)
+
+DT$"imc_clasico" <- DT$peso/c(DT$altura/100)^2
+
+# Extra!!!!!!!!!!!!!!
+DT[,imc:=peso/(altura/100)^2] # cálculo del índice de masa corporal
+DT
+
+
+
+# Calculos de promedios e incorporar este calculo a una variable
+mean(DT$imc)
+DT$exceso.imc <- datos$imc / mean(imc)
+
+DT[,exceso.imc := imc / mean(imc)]
+DT
+
+DT[,exceso.imc := imc / mean(imc) , by=nivel.estudios]
+DT
+
+
+#####################################################
+#####################################################
+# COMBINACION....
+#####################################################
+#####################################################
+
+
+DT$altura
+
+DT[,exceso.imc := imc / mean(imc)]
+
+
+
+require(data.table) # simplifica la manipulación de data.frame
+
+DF1=data.table(id="Luke Skywalker", altura=172, color.ojos="azul")
+DF2=data.table(id="Darth Vader", altura=202, color.ojos="amarillo")
+DF3=data.table(id="Leia Organa", altura=150, color.ojos="marrón")
+
+rbind(DF1,DF2,DF3)
+
+hombres<-subset(DT,sexo=="Hombre")
+mujeres<-subset(DT,sexo=="Mujer")
+
+# !!!!!!!!!!!!!!!!!! require estudiar las bases de datos previamente a ser unidas.   formatos, dimensiones,........
+
+ambos <- rbind (hombres,mujeres)
+
+
+#### SPLIT
+
+hombres_casados <- subset(DT, sexo=="Hombre" & estado.civil=="Casado")
+hombres_solteros <- subset(DT, sexo=="Hombre" & estado.civil=="Soltero")
+#..........
+
+
+estratos_sexo <- split(DT, by="sexo")
+
+estratos_sexo$"Hombre"[,imc:=peso/(altura/100)^2]
+
+estratos_sexo_ec <- split(DT, by=c("sexo","estado.civil"))
+
+names(estratos_sexo_ec)
+
+estratos_sexo_ec$"Mujer.Casado"
+
+
+# Merge
+
+DT1=data.table(id=c("C-3PO","R2-D2","Chewbacca"),altura=c(167,96,228))
+DT2=data.table(id=c("C-3PO","R2-D2"), peso=c(75,32))
+
+length(DT1$id)
+length(unique(DT1$id))
+class(DT1$id)
+
+length(DT2$id)
+length(unique(DT2$id))
+class(DT2$id)
+
+length(intersect(DT1$id,DT2$id))
+length(setdiff(DT1$id,DT2$id))
+length(setdiff(DT2$id,DT1$id))
+
+
+union<-merge(DT1,DT2,by="id",all.x=TRUE,all.y=TRUE)
+
+
+DT1=data.table(index=c("C-3PO","R2-D2","Chewbacca"),altura=c(167,96,228))
+DT2=data.table(id=c("C-3PO","R2-D2"), peso=c(75,32))
+
+# names(DT1)[1]<-"id"
+
+union<-merge(DT1,DT2,all.x=TRUE,all.y=TRUE,by.x="index",by.y="id")
+
+# union2<-merge(union,DT3,.....)
+
+
+
+# FORMATO WIDE /LONG (data.table)
+
+wide <- subset(DT, sexo=="Mujer", select=c(ID,edad,sexo,fdiag_cm,fdef))
+head(wide)
+
+long <- melt(wide, id=1:3) # id : variables que se quedan fijas
+
+long <- melt(wide, measure=4:5) # measure : identifico las variables a unir
+
+retorno_a_wide <- dcast(long, ID + sexo + edad ~ variable)
+
+head(retorno_a_wide)
+
+
+guille<-data.table(index=c("C-3PO","R2-D2","Chewbacca"),altura=c(167,96,228),
+hg=c(10,23,55),cd=c(44,55,67),pb=c(4,3,5),as=c(100,300,400))
+
+guille_long <- melt(guille,id=1:2)
+
+
+##################################################
+
+# VARIADO
+
+library(tibble)
+
+TD<-as_tibble(datos)
 
 
 
