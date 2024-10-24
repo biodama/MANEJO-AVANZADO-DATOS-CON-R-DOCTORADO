@@ -417,7 +417,7 @@ as.factor(paste(datos$"estado.civil",datos$"sexo",sep="."))
 
 # gsub
 
-nombres<-c("María","Pachón")
+nombres<-c("María","Ramón")
 
 nombres<-tolower(nombres)  # toupper
 
@@ -643,7 +643,7 @@ prepara_character <- function(var){
 	
 	variable<-toupper(variable)
 	
-	variable<-gsub("Ã“","O",variable)
+	variable<-gsub("A","O",variable)
 	variable<-gsub("Ã","I",variable)
 	variable<-gsub("Ã","A",variable)	
 	variable<-gsub("Ã‰","E",variable)	
@@ -750,6 +750,16 @@ DT[,exceso.imc := imc / mean(imc) , by=nivel.estudios]
 DT
 
 
+# fechas de cm
+# fechas de df
+# dias
+# por estado civil y nivel estudios
+
+
+
+
+
+
 #####################################################
 #####################################################
 # COMBINACION....
@@ -834,6 +844,8 @@ union<-merge(DT1,DT2,all.x=TRUE,all.y=TRUE,by.x="index",by.y="id")
 wide <- subset(DT, sexo=="Mujer", select=c(ID,edad,sexo,fdiag_cm,fdef))
 head(wide)
 
+# Dos formas
+
 long <- melt(wide, id=1:3) # id : variables que se quedan fijas
 
 long <- melt(wide, measure=4:5) # measure : identifico las variables a unir
@@ -859,3 +871,295 @@ TD<-as_tibble(datos)
 
 
 
+# Quitar las tildes,... de todas las variables tipo caracter
+
+quitar_todo<-function(var){
+		
+	if(class(var)=="character"){
+		
+		var_new<-tolower(var)
+		var_new<-gsub("á","a",var_new)
+		var_new<-gsub("é","e",var_new)
+		var_new<-gsub("í","i",var_new)
+		var_new<-gsub("ó","o",var_new)
+		var_new<-gsub("ú","u",var_new)
+
+		var_new<-gsub("ñ","n",var_new)
+
+		var_new<-gsub("ü","u",var_new)
+		var_new<-gsub("ö","o",var_new)
+	}
+	
+	if(class(var)=="factor"){
+		
+		var_new<-var
+		
+		niveles<-levels(var_new)
+		
+		niveles_new<-tolower(niveles)
+		niveles_new<-gsub("á","a",niveles_new)
+		niveles_new<-gsub("é","e",niveles_new)
+		niveles_new<-gsub("í","i",niveles_new)
+		niveles_new<-gsub("ó","o",niveles_new)
+		niveles_new<-gsub("ú","u",niveles_new)
+
+		niveles_new<-gsub("ñ","n",niveles_new)
+
+		niveles_new<-gsub("ü","u",niveles_new)
+		niveles_new<-gsub("ö","o",niveles_new)
+		
+		levels(var_new)<-niveles_new
+			
+	}
+	
+	if(class(var)=="numeric"){
+		
+		print("aqui no hago nada")
+		var_new<-var
+		
+	}
+
+	return(var_new)	
+	
+	
+}
+
+datos$"estado.civil.factor"<-as.factor(datos$"estado.civil")
+datos$"nivel.estudios.new"<-datos$"nivel.estudios"
+datos$"nivel.estudios.new"[datos$"nivel.estudios.new"%in%"Alto"]<-"Altísimo"
+datos$"nivel.estudios.new"[datos$"nivel.estudios.new"%in%"Bajo"]<-"Bajísimo"
+
+
+
+var<-datos$"nivel.estudios.new"
+var<-datos$"estado.civil.factor"
+
+
+check1<-quitar_todo(var=datos$"nivel.estudios.new")
+check2<-quitar_todo(var=datos$"estado.civil.factor")
+check3<-quitar_todo(var=datos$"ID")
+
+# datos$sexo<-quitar_todo(var=datos$sexo)
+
+# Apply
+
+datos.new<-datos
+
+datos.new[,c(3,4,5)]<-apply(datos.new[,c(3,4,5)],2,function(x) quitar_todo(x))
+
+
+# Formato loop
+
+datos.new<-datos
+
+for(m in 1:dim(datos)[2]){
+	
+	print(m)
+	datos.new[ , m ]<-quitar_todo(var=datos.new[, m ])
+		
+}
+
+
+
+datos.new<-datos
+variables<-names(datos)
+
+for(n in variables){
+	
+	print(n)
+	datos.new[,n]<-quitar_todo(var=datos.new[,n])
+	
+	
+}
+
+
+# Recodificacion
+
+datos$"edad_gr"<-ifelse(datos$"edad">=50, "Mayor", "Menor")
+
+datos$"edad"[c(1,2,3)]<-NA
+
+datos$"edad_gr"<-ifelse(datos$"edad">=50, "Mayor", "Menor")
+
+class(datos$"edad_gr")
+
+
+datos_codigos<-data.frame(ID=c(1,2,3),CIE=c("C100.1","C200.1","C300.1"))
+
+tabulacion<-function(x){
+	
+	cie <- as.character(x)
+	cod <-rep(0,length(cie))
+	cod <- ifelse(cie=="C100.1",			"CANCER",cod)
+	cod <- ifelse(cie=="C200.1" ,			"CARDIO",cod)
+	cod <- ifelse(cie=="C300.1",			"DIAB",cod)
+	
+	cod
+	
+}
+tabulacion(x=datos_codigos$CIE)
+
+####################################
+
+datos_casos<-data.frame(codINE=c(10,12,34,300),casos=c(100,200,300,1000))
+
+datos_pob<-data.frame(INE=c(34,10,12,14),pob=c(1000,3000,1500,5000))
+
+union<-merge(datos_pob,datos_casos,by.x="INE",by.y="codINE",all.x=T,all.y=T)
+
+union$TI<-union$casos/union$pob
+
+
+####################################
+
+datos$"fechas.CM" <- as.Date(datos$"fdiag_cm")
+datos$"fechas.DF" <- as.Date(datos$"fdef",format="%Y.%m.%d")
+datos$"dias"<-datos$"fechas.DF"-datos$"fechas.CM"
+
+
+DT<-as.data.table(datos)
+
+mujeres<-subset(DT,sexo=="Mujer" & cancer.mama=="Si")
+mujeres[,.(super = median(dias) ),by=.(estado.civil,nivel.estudios)]
+
+median(mujeres$dias[mujeres$estado.civil=="Soltero" & mujeres$nivel.estudios=="Alto"])
+
+
+##################################
+# Caso evaluacion
+##################################
+
+setwd("/Users/pfernandezn/Desktop/MADR/") 
+
+datos.evaluacion <- read.table(file="datos.evaluacion.txt",header=TRUE,sep="\t",encoding="UTF-8")
+
+# library(data.table)
+# DT<-fread("datos/datos.evaluacion.txt")
+
+dim(datos.evaluacion)
+
+head(datos.evaluacion)
+
+str(datos.evaluacion)
+
+
+DT$talla <- ifelse(DT$altura >= 160, "XXL", "XL")
+table(DT$talla,exclude=NULL)
+
+
+nchar(DT$ID)
+DT$"ID_new" <- paste0(DT$ID,".",DT$sexo,".",DT$edad)
+# paste(DT$ID,DT$sexo,DT$edad,sep=".")
+
+
+res<-strsplit(DT$"ID_new",split="_")
+
+res<-do.call(rbind.data.frame, res)
+dim(res)
+names(res)<-c("ID_esp","lo otro")
+DT$"ID_esp"<-res$"ID_esp"
+
+
+
+table(DT$complicaciones)
+
+DT$"comp_min"<-tolower(DT$"complicaciones")
+
+busqueda <- grep("infarto",DT$"comp_min")
+
+DT$"infarto"<-"No"
+
+DT$"infarto"[busqueda]<-"Si"
+
+
+# Busquedas de varios terminos
+
+posibles_valores<-c("infarto","infartado")
+
+busqueda_a <- grep(posibles_valores[1],DT$"comp_min")
+busqueda_b <- grep(posibles_valores[2],DT$"comp_min")
+
+busqueda<-unique(busqueda_a,busqueda_b)
+
+
+unique(DT$"comp_min" [grep("infarto", DT$"comp_min")])
+
+
+
+library("stringr") 
+
+str_detect(DT$"comp_min", "inf") 
+
+str_extract(DT$"comp_min", "inf")
+
+str_match(DT$"comp_min", "inf")
+
+
+# Extract/match all
+
+str_extract_all(DT$"comp_min", "inf")
+
+str_match_all(DT$"comp_min", "inf")
+
+
+# Importar bases de datos
+
+library(data.table)
+
+datos_genes <- fread("datos/datos.evaluacion.genes.txt")
+
+datos_biomarcadores <- fread("datos/datos.evaluacion.biomarcadores.txt")
+
+
+# Unir bases de datos
+
+DT
+datos_genes
+datos_biomarcadores
+
+length(DT$"ID")
+length(unique(DT$"ID"))
+
+length(datos_genes$"ID")
+length(unique(datos_genes$"ID"))
+
+length(datos_biomarcadores$"ID")
+length(unique(datos_biomarcadores$"ID"))
+
+
+length(intersect(DT$"ID",datos_genes$"ID"))
+
+length(intersect(DT$"ID",datos_biomarcadores$"ID"))
+
+
+union_1<-merge(DT,datos_genes,by= "ID", all.x = TRUE, all.y = TRUE)
+
+union <- merge(union_1,datos_biomarcadores,by= "ID", all.x = TRUE, all.y = TRUE)
+
+
+# Formato long
+
+union_new<-union[,c("ID","Al","Hg","Cd","Be","Se","Cu","As")]
+
+datos_long_union <- melt(union_new,id=1)
+
+names(datos_long_union)[c(2,3)]<-c("Biomarcador","Concentracion")
+
+
+
+# Para toda la base de datos
+
+datos_long_union <- melt(union,measure=120:126)
+
+
+
+# Cosas para los SNPs 
+
+union$"SNP_1" <- gsub(" ", "",union$"SNP_1")
+union$"SNP_1" <- gsub("", " ",union$"SNP_1")
+
+
+# Tabulaciones
+
+check<- c("	homa	adios")
+gsub("\t","",check)
